@@ -29,7 +29,9 @@ output/hashes.txt: output/database.sqlite
 hashes: output/hashes.txt
 
 release: output/database.sqlite output/hashes.txt
-	zip -r -X output/airline-twitter-sentiment-release-`date -u +'%Y-%m-%d-%H-%M-%S'` output/*
+	cp -r output airline-twitter-sentiment
+	zip -r -X output/airline-twitter-sentiment-release-`date -u +'%Y-%m-%d-%H-%M-%S'` airline-twitter-sentiment/*
+	rm -rf airline-twitter-sentiment
 
 all: csv db hashes release
 
